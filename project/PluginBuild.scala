@@ -8,12 +8,12 @@ object PluginBuild extends Build {
 
   val delvingReleases = "Delving Releases Repository" at "http://nexus.delving.org/nexus/content/repositories/releases"
   val delvingSnapshots = "Delving Snapshot Repository" at "http://nexus.delving.org/nexus/content/repositories/snapshots"
-  val delvingRepository = if(buildVersion.endsWith("SNAPSHOT")) delvingSnapshots else delvingReleases
 
   val dependencies = Seq(
-    "play"                           %% "play"                         % "2.1.0",
-    "play"                           %% "play-java"                    % "2.1.0",
-    "play"                           %% "templates"                    % "2.1.0",
+    "com.typesafe.play"              %% "play"                         % "2.2.0",
+    "com.typesafe.play"              %% "play-java"                    % "2.2.0",
+    "com.typesafe.play"              %% "templates"                    % "2.2.0",
+    "com.typesafe.play"              %% "play-cache"                   % "2.2.0",
     "eu.delving"                     %  "groovy-templates-engine"      % "0.7.5",
     "commons-io"                     %  "commons-io"                   % "2.0",
     "com.googlecode.htmlcompressor"  %  "htmlcompressor"               % "1.5.2",
@@ -53,11 +53,11 @@ object PluginBuild extends Build {
 
       libraryDependencies ++= dependencies,
 
-      publishTo := Some(delvingRepository),
+      publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/nicolive2/play2-groovy-templates-deploy/maven_repo"))),
 
-      credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
+      publishMavenStyle := true,
 
-      publishMavenStyle := true
+      publishArtifact in (Compile, packageDoc) := false
     )
 
     lazy val templatesSbtPlugin = Project(
@@ -70,15 +70,15 @@ object PluginBuild extends Build {
 
       version := buildVersion,
 
-      scalaVersion := "2.9.2",
+      scalaVersion := "2.10.0",
 
-      scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.9.2"),
+      scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10.0"),
 
-      publishTo := Some(delvingRepository),
+      publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.jenkins/jobs/play2-groovy-templates-deploy/workspace/maven_repo"))),
 
-      credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
+      publishMavenStyle := true,
 
-      publishMavenStyle := true
+      publishArtifact in (Compile, packageDoc) := false
     )
 
 
