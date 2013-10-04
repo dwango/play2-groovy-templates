@@ -53,7 +53,7 @@ object PluginBuild extends Build {
 
       libraryDependencies ++= dependencies,
 
-      publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/nicolive2/play2-groovy-templates-deploy/maven_repo"))),
+      publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.jenkins/jobs/play2-groovy-templates-deploy/workspace/maven_repo"))),
 
       publishMavenStyle := true,
 
