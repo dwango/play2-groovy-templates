@@ -3,7 +3,7 @@ import Keys._
 
 object PluginBuild extends Build {
 
-  val buildVersion = "1.6.3-SNAPSHOT"
+  val buildVersion = "1.6.3-SNAPSHOT-DWANGO"
 
 
   val delvingReleases = "Delving Releases Repository" at "http://nexus.delving.org/nexus/content/repositories/releases"
@@ -49,6 +49,7 @@ object PluginBuild extends Build {
       resolvers += delvingSnapshots,
       
       resolvers += "Typesafe releases" at "http://repo.typesafe.com/typesafe/releases/",
+
       resolvers += Resolver.file("local-ivy-repo", file(Path.userHome + "/.ivy2/local"))(Resolver.ivyStylePatterns),
 
       libraryDependencies ++= dependencies,
