@@ -15,10 +15,10 @@ object PluginBuild extends Build {
     "com.typesafe.play"              %% "templates"                    % "2.2.0",
     "com.typesafe.play"              %% "play-cache"                   % "2.2.0",
     "eu.delving"                     %  "groovy-templates-engine"      % "0.7.5",
-    "commons-io"                     %  "commons-io"                   % "2.0",
     "com.googlecode.htmlcompressor"  %  "htmlcompressor"               % "1.5.2",
     "com.google.javascript"          %  "closure-compiler"             % "r1043",
     "com.yahoo.platform.yui"         %  "yuicompressor"                % "2.4.6",
+    "commons-io"                     %  "commons-io"                   % "2.0",
    ("org.reflections"                %  "reflections"                  % "0.9.8" notTransitive())
      .exclude("com.google.guava", "guava")
      .exclude("javassist", "javassist")
@@ -29,8 +29,8 @@ object PluginBuild extends Build {
     base = file(".")
   ).settings(
     publish := { },
-    scalaVersion := "2.10.0",
-    scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10")
+    scalaVersion := "2.10.0"
+    //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10.0")
   ).aggregate(templatesSbtPlugin, main)
 
   lazy val main = Project(
@@ -42,7 +42,7 @@ object PluginBuild extends Build {
 
       scalaVersion := "2.10.0",
 
-      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
+      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10.0"),
 
       resolvers += delvingReleases,
 
@@ -72,7 +72,7 @@ object PluginBuild extends Build {
 
       scalaVersion := "2.10.0",
 
-      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
+      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10.0"),
 
       publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.jenkins/jobs/play2-groovy-templates-deploy/workspace/maven_repo"))),
 
