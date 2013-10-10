@@ -29,7 +29,7 @@ object PluginBuild extends Build {
     base = file(".")
   ).settings(
     publish := { },
-    scalaVersion := "2.10",
+    scalaVersion := "2.10.0",
     scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10")
   ).aggregate(templatesSbtPlugin, main)
 
@@ -70,7 +70,7 @@ object PluginBuild extends Build {
 
       version := buildVersion,
 
-      scalaVersion := "2.10",
+      scalaVersion := "2.10.0",
 
       scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
 
