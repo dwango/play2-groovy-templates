@@ -42,7 +42,7 @@ object PluginBuild extends Build {
 
       scalaVersion := "2.10.0",
 
-      scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
+      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
 
       resolvers += delvingReleases,
 
@@ -72,7 +72,7 @@ object PluginBuild extends Build {
 
       scalaVersion := "2.10.0",
 
-      scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
+      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
 
       publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.jenkins/jobs/play2-groovy-templates-deploy/workspace/maven_repo"))),
 
