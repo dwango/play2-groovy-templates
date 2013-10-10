@@ -42,11 +42,6 @@
             <version>0.7.5</version>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.googlecode.htmlcompressor</groupId>
             <artifactId>htmlcompressor</artifactId>
             <version>1.5.2</version>
@@ -60,6 +55,11 @@
             <groupId>com.yahoo.platform.yui</groupId>
             <artifactId>yuicompressor</artifactId>
             <version>2.4.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0</version>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
