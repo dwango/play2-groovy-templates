@@ -40,7 +40,7 @@ object PluginBuild extends Build {
 
       version := buildVersion,
 
-      scalaVersion := "2.10",
+      scalaVersion := "2.10.0",
 
       scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.10"),
 
