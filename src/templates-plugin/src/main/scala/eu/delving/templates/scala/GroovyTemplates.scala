@@ -135,7 +135,7 @@ trait GroovyTemplates {
 
     val contextArgs = callArgs ++ renderArguments
 
-    val language = if(contextArgs.contains(__LANG)) contextArgs(__LANG).toString else lang.language
+    val language = if(contextArgs.contains(__LANG)) contextArgs(__LANG).toString else request2lang.language
 
     // TODO also pass in the response encoding
 

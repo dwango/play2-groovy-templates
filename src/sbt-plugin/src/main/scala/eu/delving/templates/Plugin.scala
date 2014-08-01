@@ -1,9 +1,7 @@
 package eu.delving.templates
 
 import sbt._
-import sbt.NameFilter._
 import Keys._
-import sbt.Load.BuildStructure
 
 /**
  *
@@ -55,13 +53,13 @@ object Plugin extends sbt.Plugin {
           filterNot(_.getName.contains(".scala."))
     }.flatten
 
-    def aggregateBaseDirs(proj: ProjectRef, struct: Load.BuildStructure) = {
+    def aggregateBaseDirs(proj: ProjectRef, struct: BuildStructure) = {
       val deps = collectionProjectDependencies(_.dependencies.map(_.project))(proj, struct)
       val baseDirs: Seq[File] = deps.flatMap(ref => (baseDirectory in (ref, Compile)).get(struct.data))
       baseDirs
     }
 
-    def collectionProjectDependencies(op: ResolvedProject => Seq[ProjectRef])(projRef: ProjectRef, struct: Load.BuildStructure): Seq[ProjectRef] = {
+    def collectionProjectDependencies(op: ResolvedProject => Seq[ProjectRef])(projRef: ProjectRef, struct: BuildStructure): Seq[ProjectRef] = {
       val deps = Project.getProject(projRef, struct).toSeq.flatMap(op)
       deps.flatMap(ref => ref +: collectionProjectDependencies(op)(ref, struct)).distinct
     }
@@ -88,7 +86,7 @@ object Plugin extends sbt.Plugin {
 
   }
 
-  lazy val groovyTemplatesSettings: Seq[Project.Setting[_]] = Seq(
+  lazy val groovyTemplatesSettings: Seq[Def.Setting[_]] = Seq(
     groovyTemplatesList <<= (baseDirectory, thisProjectRef, buildStructure, sourceManaged in Compile) map {
       (base, projectRef, buildStructure, target) => Seq(TemplatePaths(base, projectRef, buildStructure, target).templateList)
     },
