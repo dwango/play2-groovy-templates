@@ -6,8 +6,7 @@ object PluginBuild extends Build {
   val buildVersion = "1.6.4-SNAPSHOT-DWANGO"
 
 
-  val delvingReleases = "Delving Releases Repository" at "http://nexus.delving.org/nexus/content/repositories/releases"
-  val delvingSnapshots = "Delving Snapshot Repository" at "http://nexus.delving.org/nexus/content/repositories/snapshots"
+  val delvingReleases = "Dwango Repository" at "http://dwango.github.io/"
 
   val dependencies = Seq(
     "org.scala-lang.modules"         %% "scala-xml"                    % "1.0.2",
@@ -46,8 +45,6 @@ object PluginBuild extends Build {
       //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.11.0"),
 
       resolvers += delvingReleases,
-
-      resolvers += delvingSnapshots,
       
       resolvers += "Typesafe releases" at "http://repo.typesafe.com/typesafe/releases/",
 
