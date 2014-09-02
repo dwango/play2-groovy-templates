@@ -10,9 +10,9 @@ object PluginBuild extends Build {
 
   val dependencies = Seq(
     "org.scala-lang.modules"         %% "scala-xml"                    % "1.0.2",
-    "com.typesafe.play"              %% "play"                         % "2.3.2",
-    "com.typesafe.play"              %% "play-java"                    % "2.3.2",
-    "com.typesafe.play"              %% "play-cache"                   % "2.3.2",
+    "com.typesafe.play"              %% "play"                         % play.core.PlayVersion.current,
+    "com.typesafe.play"              %% "play-java"                    % play.core.PlayVersion.current,
+    "com.typesafe.play"              %% "play-cache"                   % play.core.PlayVersion.current,
     "eu.delving"                     %  "groovy-templates-engine"      % "0.7.5",
     "com.github.scala-incubator.io"  %% "scala-io-file"                % "0.4.3",
     "com.googlecode.htmlcompressor"  %  "htmlcompressor"               % "1.5.2",
@@ -29,8 +29,7 @@ object PluginBuild extends Build {
     base = file(".")
   ).settings(
     publish := { },
-    scalaVersion := "2.11.0"
-    //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.11.0")
+    scalaVersion := "2.11.2"
   ).aggregate(templatesSbtPlugin, main)
 
   lazy val main = Project(
@@ -40,9 +39,7 @@ object PluginBuild extends Build {
 
       version := buildVersion,
 
-      scalaVersion := "2.11.0",
-
-      //scalaBinaryVersion := CrossVersion.binaryScalaVersion("2.11.0"),
+      scalaVersion := "2.11.2",
 
       resolvers += delvingReleases,
       
@@ -77,7 +74,5 @@ object PluginBuild extends Build {
 
       publishArtifact in (Compile, packageDoc) := false
     )
-
-
-
+  
 }
