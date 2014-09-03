@@ -1,6 +1,6 @@
 package eu.delving.templates.java;
 
-import play.mvc.Content;
+import play.twirl.api.Content;
 
 /**
  * @author Manuel Bernhardt <bernhardt.manuel@gmail.com>
