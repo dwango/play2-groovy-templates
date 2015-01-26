@@ -5,11 +5,11 @@ object PluginBuild extends Build {
 
   val buildVersion = "1.6.4-SNAPSHOT-DWANGO"
 
+  val scala = "2.10.4"
 
   val delvingReleases = "Dwango Repository" at "http://dwango.github.io/"
 
   val dependencies = Seq(
-    "org.scala-lang.modules"         %% "scala-xml"                    % "1.0.2",
     "com.typesafe.play"              %% "play"                         % play.core.PlayVersion.current,
     "com.typesafe.play"              %% "play-java"                    % play.core.PlayVersion.current,
     "com.typesafe.play"              %% "play-cache"                   % play.core.PlayVersion.current,
@@ -29,7 +29,7 @@ object PluginBuild extends Build {
     base = file(".")
   ).settings(
     publish := { },
-    scalaVersion := "2.11.2"
+    scalaVersion := scala
   ).aggregate(templatesSbtPlugin, main)
 
   lazy val main = Project(
@@ -39,10 +39,10 @@ object PluginBuild extends Build {
 
       version := buildVersion,
 
-      scalaVersion := "2.11.2",
+      scalaVersion := scala,
 
       resolvers += delvingReleases,
-      
+
       resolvers += "Typesafe releases" at "http://repo.typesafe.com/typesafe/releases/",
 
       resolvers += Resolver.file("local-ivy-repo", file(Path.userHome + "/.ivy2/local"))(Resolver.ivyStylePatterns),
@@ -66,7 +66,7 @@ object PluginBuild extends Build {
 
       version := buildVersion,
 
-      scalaVersion := "2.10.0",
+      scalaVersion := scala,
 
       publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.jenkins/jobs/play2-groovy-templates-deploy/workspace/maven_repo"))),
 
