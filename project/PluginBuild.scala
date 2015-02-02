@@ -5,8 +5,6 @@ object PluginBuild extends Build {
 
   val buildVersion = "1.6.4-SNAPSHOT-DWANGO"
 
-  val scala = "2.10.4"
-
   val delvingReleases = "Dwango Repository" at "http://dwango.github.io/"
 
   val dependencies = Seq(
@@ -28,8 +26,7 @@ object PluginBuild extends Build {
     id = "root",
     base = file(".")
   ).settings(
-    publish := { },
-    scalaVersion := scala
+    publish := { }
   ).aggregate(templatesSbtPlugin, main)
 
   lazy val main = Project(
@@ -38,8 +35,6 @@ object PluginBuild extends Build {
       organization := "eu.delving",
 
       version := buildVersion,
-
-      scalaVersion := scala,
 
       resolvers += delvingReleases,
 
@@ -65,8 +60,6 @@ object PluginBuild extends Build {
       organization := "eu.delving",
 
       version := buildVersion,
-
-      scalaVersion := scala,
 
       publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.jenkins/jobs/play2-groovy-templates-deploy/workspace/maven_repo"))),
 
